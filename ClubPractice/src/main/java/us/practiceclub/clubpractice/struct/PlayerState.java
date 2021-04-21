@@ -5,7 +5,6 @@ public enum PlayerState {
     QUEUED,
     SPECTATING,
     IN_MATCH,
-    BUILD,
     STAFF,
     DEV
 }

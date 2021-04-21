@@ -2,20 +2,20 @@ package us.practiceclub.clubpractice.listeners;
 
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerItemDamageEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.player.*;
 import us.practiceclub.clubpractice.ClubPractice;
+import us.practiceclub.clubpractice.enums.Items;
 import us.practiceclub.clubpractice.struct.PlayerState;
 import us.practiceclub.clubpractice.utilities.C;
 
@@ -75,6 +75,7 @@ public class LobbyListener implements Listener {
         Player player = event.getPlayer();
         if(clubPractice.getProfileHandler().getProfile(player) == null ||
                 clubPractice.getProfileHandler().getProfile(player).getPlayerState() != PlayerState.LOBBY) return;
+        if(clubPractice.getProfileHandler().getProfile(player).isBuildEnabled()) return;
         event.setCancelled(true);
     }
 
@@ -83,6 +84,7 @@ public class LobbyListener implements Listener {
         Player player = event.getPlayer();
         if(clubPractice.getProfileHandler().getProfile(player) == null ||
                 clubPractice.getProfileHandler().getProfile(player).getPlayerState() != PlayerState.LOBBY) return;
+        if(clubPractice.getProfileHandler().getProfile(player).isBuildEnabled()) return;
         event.setCancelled(true);
     }
 
@@ -126,5 +128,29 @@ public class LobbyListener implements Listener {
         if(clubPractice.getProfileHandler().getProfile(player) == null ||
                 clubPractice.getProfileHandler().getProfile(player).getPlayerState() != PlayerState.LOBBY) return;
         event.setCancelled(true);
+    }
+    
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        if(clubPractice.getProfileHandler().getProfile(player) == null || 
+            clubPractice.getProfileHandler().getProfile(player).getPlayerState() != PlayerState.LOBBY) return;
+        if(!event.getAction().name().contains("RIGHT")) return;
+        if(player.getItemInHand() == null || player.getItemInHand().getType() == Material.AIR) return;
+        if(player.getItemInHand().isSimilar(Items.UNRANKED_QUEUE.getItem())) {
+            //TODO: Queue Player
+        } else if(player.getItemInHand().isSimilar(Items.RANKED_QUEUE.getItem())) {
+            //TODO: Queue Player
+        } else if(player.getItemInHand().isSimilar(Items.PREMIUM_QUEUE.getItem())) {
+            //TODO: Queue Player
+        } else if(player.getItemInHand().isSimilar(Items.SPECTATE.getItem())) {
+            //TODO: Enable Spectator
+        } else if(player.getItemInHand().isSimilar(Items.HOST_EVENTS.getItem())) {
+            //TODO: Open Host Menu
+        } else if(player.getItemInHand().isSimilar(Items.LEADERBOARDS.getItem())) {
+            //TODO: Open Leaderboards
+        } else if(player.getItemInHand().isSimilar(Items.SETTINGS.getItem())) {
+            //TODO: Open Settings
+        }
     }
 }

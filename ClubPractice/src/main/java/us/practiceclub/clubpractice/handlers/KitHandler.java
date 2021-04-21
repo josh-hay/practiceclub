@@ -1,6 +1,7 @@
 package us.practiceclub.clubpractice.handlers;
 
 import com.google.common.collect.Maps;
+import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.inventory.ItemStack;
 import us.practiceclub.clubpractice.ClubPractice;
@@ -13,6 +14,8 @@ import java.util.HashMap;
 public class KitHandler {
 
     private ClubPractice clubPractice;
+
+    @Getter
     private HashMap<String, Kit> kits;
 
     public KitHandler(ClubPractice clubPractice) {

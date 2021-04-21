@@ -3,6 +3,3 @@ main: us.practiceclub.clubpractice.ClubPractice
 version: 1.0
 author: suicide#0001
 description: Practice Club - Practice
-commands:
-  createkit:
-  kit:

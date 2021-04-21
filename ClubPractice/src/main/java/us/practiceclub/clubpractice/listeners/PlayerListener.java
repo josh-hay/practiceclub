@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import us.practiceclub.clubpractice.ClubPractice;
 import us.practiceclub.clubpractice.utilities.C;
+import us.practiceclub.clubpractice.utilities.ScoreHelper;
 
 @RequiredArgsConstructor
 public class PlayerListener implements Listener {
@@ -21,6 +22,7 @@ public class PlayerListener implements Listener {
         sendWelcomeMessage(player);
 
         clubPractice.getProfileHandler().loadProfile(player);
+        ScoreHelper.createScore(player);
     }
 
     private void sendWelcomeMessage(Player player) {

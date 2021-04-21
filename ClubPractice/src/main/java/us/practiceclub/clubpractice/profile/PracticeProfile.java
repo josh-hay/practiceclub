@@ -14,12 +14,20 @@ public class PracticeProfile {
 
     @Getter
     @Setter
+    private boolean scoreboardEnabled;
+    @Getter
+    @Setter
+    private boolean buildEnabled;
+
+    @Getter
+    @Setter
     private PlayerState playerState;
 
     public PracticeProfile(Player player) {
         this.uuid = player.getUniqueId();
         this.player = player;
         this.playerState = PlayerState.LOBBY;
+        this.scoreboardEnabled = true;
     }
 
 }
