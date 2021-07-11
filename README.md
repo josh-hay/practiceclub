@@ -1,2 +1,2 @@
 # practiceclub.us-master
- Official PracticeClub Repository
+Incomplete repository of the Practice Club Project.
